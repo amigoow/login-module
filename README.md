@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # codeigniter-login-logout-register
 A user login, logout, register start for Codeigniter 3
 
@@ -34,3 +35,6 @@ Go to http://example.com/register and create a user
 It is just a starter for user login logout register functionalities.
 
 Extend the user controller or keep it as it is and write your own application with Codeigniter.
+=======
+# login-module
+>>>>>>> 13fcc3ee13ccaf548abfc19c4ddeb195498f0026
