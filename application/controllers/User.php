@@ -36,6 +36,59 @@ class User extends CI_Controller {
 		
 	}
 	
+
+	/**
+	 * admin function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function admin($validation_msg) {
+		$this->load->library('form_validation');
+
+		$data = new stdClass();
+		$data = $validation_msg;
+		$this->load->view('header');
+		$this->load->view('admin/login', $data);
+		$this->load->view('footer');
+	}
+
+	/**
+	 * admin_login function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function admin_login() {
+		
+		$data = new stdClass();
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		
+		$res = $this->user_model->resolve_admin_login($username, $password);
+
+		if ($res) {
+			
+			//creating session
+			$this->load->view('admin/header'); 
+			$this->load->view('admin/dashboard', $data);
+			$this->load->view('admin/footer'); 
+			$this->create_session($username);
+			
+			
+		} else {
+			$data = new stdClass;
+			// login failed
+			$data->error = 'Wrong username or password.';
+			
+			// send error to the view
+			$this->admin($data);
+			
+		}
+	}
+	
+
+
 	/**
 	 * register function.
 	 * 
@@ -326,7 +379,7 @@ class User extends CI_Controller {
 
 	        $message = '<h2 style="color:#737373;">Hi,</h2>';
 	        $message .= '<p style="font-size: 1.4em;color: #737373;">We have received your request to recover your password. Your new password is: </p><br/>';
-	        $message .= '<div style="text-align: center;"><div style="text-align: center;font-weight: bolder;border-radius: 10%;padding: 0.5625em 1.875em;font-size: 1.4em;background-color: #7a105c;color:#fff;" >'.$password.'</div></div><br/><a style="margin:0 auto; display: block;text-align: center;" href="'.$login_link.'" title="login url">COPY PASSWORD AND CLICK TO NAVIGATE TO LOGIN PAGE</a>';
+	        $message .= '<div style="text-align: center;"><div style="text-align: center;font-weight: bolder;border-radius: 10%;padding: 0.5625em 1.875em;font-size: 1.4em;background-color: #7a105c;color:#fff;" >'.$password.'</div></div><br/><a style="margin:0 auto; display: block;text-align: center;" href="'.$login_link.'" title="login url">COPY PASSWORD AND CLICK HERE NAVIGATE TO LOGIN PAGE</a>';
 	        $message .= '<h5 style="text-align: center;">CORPORATE FIRM<br/><small>info@corporatefirm.com</small></h5>';
 	        $message .= '<p>'.date("d-m-Y",time()).'</p>';
 	        

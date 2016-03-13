@@ -74,6 +74,27 @@ class User_model extends CI_Model {
 		return $this->verify_password_hash($password, $hash);
 		
 	}
+	/**
+	 * resolve_admin_login function.
+	 * 
+	 * @access public
+	 * @param mixed $username
+	 * @param mixed $password
+	 * @return bool true on success, false on failure
+	 */
+	public function resolve_admin_login($username, $password) {
+		
+		$this->db->from('users');
+		$this->db->where('username', $username);
+		$this->db->where('password', $password);
+		$this->db->where('is_admin', 1);
+		
+		$result = $this->db->get()->num_rows();
+
+		
+		return $result;
+		
+	}
 	
 	/**
 	 * get_user_id_from_username function.
