@@ -1,0 +1,150 @@
+body{
+  font-family: 'Open Sans'; 
+  font-weight: 400;
+}
+.page-header{
+    text-align:center;
+    color:#fff;
+    background-color: #B15252;
+    padding: 20px
+}
+.page-header h1{
+    font-weight: 400;
+}
+.page-header p{
+    
+}
+.rating-container{
+	
+	color: #737272;
+
+}
+.star-rating{
+    text-align: center;
+    margin-left: 5px;
+}
+.review-options{
+  margin-top: 60px;
+}
+
+footer{
+
+margin-top:150px;
+background-color: #ccc;
+color: #111;
+
+
+
+padding:20px;
+text-align:center;
+
+}
+.rating-xl {
+    font-size: 9.2em;
+}
+#myCaption{
+    text-align: center;     
+}
+.jumbotron h1{
+    font-size: 40px;
+}
+#myCaption{
+    font-size: 20px;
+
+}
+#myCaption, #feedbackForm{
+    display: none;
+    margin: 15px;
+}
+/*.modal-body{
+    margin: 0 auto; max-height: calc(100vh - 195px);
+overflow-y: auto;
+}
+.modal-dialog, .modal-body {
+  width: 95%;
+  height: 95%;
+  padding: 0;
+}
+
+.modal-content {
+  height: 95%;
+  border*/-radius: 0;
+}
+
+/*arrow animation*/
+@-moz-keyframes aia2{
+from{top:3px;}
+    to{top:10px;}
+}
+
+@-webkit-keyframes aia2{
+from{top:3px;}
+    to{top:10px;}
+}
+@-o-keyframes aia2{
+from{top:3px;}
+    to{top:10px;}
+}        
+@keyframes bounce_it{
+    from{top:0px;}
+    to{top:10px;}
+}
+#bouncing_arrow{
+   color:#B15252;font-size:50px;-webkit-animation: bounce_it 1s infinite alternate;
+  -moz-animation: bounce_it 1s linear infinite alternate;
+  -ms-animation: bounce_it 1s linear infinite alternate;
+  -o-animation: bounce_it 1s linear infinite alternate;
+  animation: bounce_it 1s linear infinite alternate;
+}
+#review-sel{
+  text-align: center;
+  margin-top: 60px;
+
+}
+#review-sel .btn-group{
+  padding: 20px;
+}
+#review-sel button{
+  padding: 26.5px;
+  font-size: 1.3em;
+  text-transform: capitalize;
+}
+#review-sel .rev-title{
+    padding: 30px;
+    font-size: 2.1em;
+    text-transform: capitalize;
+    width: 155px;
+    font-weight: bold;
+    text-align: initial;
+}
+#ajax-load {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 50%;
+}
+#review-sel .assoc-icon{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 48px;
+    width: 48px;
+}
+@media (min-width: 1016px){
+  .option-modal.modal-dialog{
+    width: 85%;
+    height: 75%;
+  }
+  .option-modal.modal-body{
+    height: 70%;
+  }
+  #review-sel{
+    margin-top: 15px;
+  }
+}
