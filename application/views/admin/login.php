@@ -1,9 +1,9 @@
-
+<!-- ADMIN LOGIN TEMPLATE -->
 
 	<div id="login-page">
 	  	<div class="container">
 	  		<?php $this->view('inc/validation_error.php'); ?>
-		    <form class="form-login" method="POST" action="<?php echo base_url('user/admin_login') ?>">
+		    <form class="form-login" method="POST" action="<?php echo base_url('admin') ?>">
 		        <h2 class="form-login-heading">ADMIN SIGNIN</h2>
 		        <div class="login-wrap">
 		            

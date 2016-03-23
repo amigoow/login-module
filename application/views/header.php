@@ -47,6 +47,9 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="<?= base_url() ?>"><?= isset($title) ? $title : "Corporate Filter"; ?></a>
+					<?php if (isset($_SESSION['username']) && $_SESSION['logged_in'] === true) : ?>
+						<a class="navbar-brand" href="<?= base_url('dashboard') ?>">Dashboard</a>
+					<?php endif; ?>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">

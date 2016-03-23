@@ -43,51 +43,63 @@ class User extends CI_Controller {
 	 * @access public
 	 * @return void
 	 */
-	public function admin($validation_msg) {
-		$this->load->library('form_validation');
+	public function admin($validation_msg=null) {
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			//redirect to dashboard
+			redirect(base_url('dashboard'));
+			return;
+		}
 
 		$data = new stdClass();
 		$data = $validation_msg;
-		$this->load->view('header');
-		$this->load->view('admin/login', $data);
-		$this->load->view('footer');
-	}
-
-	/**
-	 * admin_login function.
-	 * 
-	 * @access public
-	 * @return void
-	 */
-	public function admin_login() {
 		
-		$data = new stdClass();
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-		
-		$res = $this->user_model->resolve_admin_login($username, $password);
 
-		if ($res) {
+
+		// load form helper and validation library
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters(null, null);
+		// set validation rules
+		$this->form_validation->set_rules('username', 'Username', 'required|alpha_numeric');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		
+		if ($this->form_validation->run() == false) {
 			
-			//creating session
-			$this->load->view('admin/header'); 
-			$this->load->view('admin/dashboard', $data);
-			$this->load->view('admin/footer'); 
-			$this->create_session($username);
-			
+			// validation not ok, send validation errors to the view
+			$this->load->view('header');
+			$this->load->view('admin/login', $data);
+			$this->load->view('footer');
+
 			
 		} else {
-			$data = new stdClass;
-			// login failed
-			$data->error = 'Wrong username or password.';
 			
-			// send error to the view
-			$this->admin($data);
+			// set variables from the form
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
 			
-		}
-	}
-	
+			if ($this->user_model->resolve_admin_login($username, $password)) {
+				
+				
+				//creating session
+				$_SESSION['logged_in']    = (bool)true;
+				$_SESSION['is_admin']     = (bool)true;
+				redirect(base_url('dahsboard'));
+			} else {
+				$data = new stdClass;
+				// login failed
+				$data->error = 'Wrong username or password.';
+				
+				// send error to the view
+				$this->load->view('header');
+				$this->load->view('admin/login', $data);
+				$this->load->view('footer');
 
+				
+			}
+			
+		}//ends
+
+	}
 
 	/**
 	 * register function.
@@ -136,9 +148,7 @@ class User extends CI_Controller {
 					);
 				$this->send_email($info);
 				//redirecting 
-				$this->load->view('header');
-				$this->load->view('user/register/register_success', $data);
-				$this->load->view('footer');
+				$this->create_session();
 				
 			} else {
 				
@@ -164,7 +174,11 @@ class User extends CI_Controller {
 	 */
 	public function login() {
 		
-		
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			//redirect to dashboard
+			redirect(base_url('/dashboard'));
+			return;
+		}
 		
 		// load form helper and validation library
 		$this->load->helper('form');
@@ -339,9 +353,7 @@ class User extends CI_Controller {
 			$_SESSION['logged_in']    = (bool)true;
 			$_SESSION['is_confirmed'] = (bool)$user->is_confirmed;
 			$_SESSION['is_admin']     = (bool)$user->is_admin;	
-			$this->load->view('header');
-			$this->load->view('user/login/login_success', $data);
-			$this->load->view('footer');
+			redirect(base_url('dashboard'));
 		}
 	}
 	/**
@@ -378,8 +390,8 @@ class User extends CI_Controller {
         	$this->user_model->update_user($updated_info, $email);
 
 	        $message = '<h2 style="color:#737373;">Hi,</h2>';
-	        $message .= '<p style="font-size: 1.4em;color: #737373;">We have received your request to recover your password. Your new password is: </p><br/>';
-	        $message .= '<div style="text-align: center;"><div style="text-align: center;font-weight: bolder;border-radius: 10%;padding: 0.5625em 1.875em;font-size: 1.4em;background-color: #7a105c;color:#fff;" >'.$password.'</div></div><br/><a style="margin:0 auto; display: block;text-align: center;" href="'.$login_link.'" title="login url">COPY PASSWORD AND CLICK HERE NAVIGATE TO LOGIN PAGE</a>';
+	        $message .= '<p style="font-size: 1.4em;color: #737373;">We have received your request to recover your password. Your login details are as follows: </p><br/>';
+	        $message .= '<div style="text-align:center;border: 1px solid black;padding: 20px;"><div style="font-weight:bolder;font-size:1.4"> Username: <span style="text-align:center;border-radius:10%;padding:0.5625em 1.875em;font-size:1em;background-color:#4d90fe;color:#fff">'.$username.'</span> & Password: <span style="text-align:center;border-radius:10%;padding:0.5625em 1.875em;font-size:1em;background-color:#4d90fe;color:#fff">'.$password.'</span></div></div><br/><a style="margin:0 auto; display: block;text-align: center;" href="'.$login_link.'" title="login url">COPY PASSWORD AND CLICK HERE TO NAVIGATE TO LOGIN PAGE</a>';
 	        $message .= '<h5 style="text-align: center;">CORPORATE FIRM<br/><small>info@corporatefirm.com</small></h5>';
 	        $message .= '<p>'.date("d-m-Y",time()).'</p>';
 	        

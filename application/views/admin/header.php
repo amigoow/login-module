@@ -7,7 +7,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>Admin Panel - Corporate Firm </title>
+    <title>Dashboard - Corporate Firm </title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
