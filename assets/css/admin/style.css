@@ -68,7 +68,9 @@ a, a:hover, a:focus {
 	outline: none !important;
 	text-decoration: none;
 }	
-
+.uppercase{
+    text-transform: uppercase;
+}
 
 
 /*Theme Backgrounds*/

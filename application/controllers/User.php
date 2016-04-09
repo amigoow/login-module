@@ -109,6 +109,12 @@ class User extends CI_Controller {
 	 */
 	public function register() {
 		
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			//redirect to dashboard
+			redirect(base_url('/dashboard'));
+			return;
+		}
+
 		// create the data object
 		$data = new stdClass();
 		
@@ -148,7 +154,9 @@ class User extends CI_Controller {
 					);
 				$this->send_email($info);
 				//redirecting 
-				$this->create_session();
+				$this->load->view('header');
+				$this->load->view('user/register/register_success', $info);
+				$this->load->view('footer');
 				
 			} else {
 				
@@ -228,13 +236,14 @@ class User extends CI_Controller {
 	 * @access public
 	 * @return void
 	 */
-	public function confirm($username) {
+	public function confirm() {
+		$username = $this->uri->segment(2, FALSE);
+		$confirm_code = $this->uri->segment(3, FALSE);
 		
-		$confirm_code = $this->uri->segment(4, FALSE);
-
 		if(isset($username) && $confirm_code != FALSE){
 			
 			$username_c = $this->user_model->confirm_user($username, $confirm_code);
+
 			if($username_c){
 
 				//email is confirmed now so let's create a session
@@ -342,7 +351,7 @@ class User extends CI_Controller {
 		
 		if($user->is_confirmed == 0){
 			// user login ok but email not confirmed
-			$data["email"] = $user->email;
+			$data->email = $user->email;
 			$this->load->view('header');
 			$this->load->view('user/login/login_success_without_confirm_email', $data);
 			$this->load->view('footer');

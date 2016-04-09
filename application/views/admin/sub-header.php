@@ -1,12 +1,12 @@
 <header class="header black-bg">
    
     <!--logo start-->
-    <a href="index.html" class="logo"><b>CORPORATE FIRM</b></a>
+    <a href="#" class="logo"><b>CORPORATE FIRM</b></a>
     <!--logo end-->
-    <div class="nav notify-row" id="top_menu">
-        <!--  notification start -->
+    <!-- <div class="nav notify-row" id="top_menu">
+        
         <ul class="nav top-menu">
-            <!-- settings start -->
+        
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                     <i class="fa fa-tasks"></i>
@@ -74,8 +74,7 @@
                     </li>
                 </ul>
             </li>
-            <!-- settings end -->
-            <!-- inbox dropdown start-->
+            
             <li id="header_inbox_bar" class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                     <i class="fa fa-envelope-o"></i>
@@ -139,10 +138,10 @@
                     </li>
                 </ul>
             </li>
-            <!-- inbox dropdown end -->
+       
         </ul>
-        <!--  notification end -->
-    </div>
+       
+    </div> -->
     <div class="top-menu">
     	<ul class="nav pull-right top-menu">
             <li><a class="logout" href="<?= site_url('logout') ?>">Logout</a></li>

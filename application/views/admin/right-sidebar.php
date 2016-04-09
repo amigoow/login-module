@@ -1,8 +1,8 @@
 <div class="col-lg-3 ds">
-  <!--COMPLETED ACTIONS DONUTS CHART-->
+  
   <h3>NOTIFICATIONS</h3>
                       
-  <!-- First Action -->
+  
   <div class="desc">
   	<div class="thumb">
   		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>

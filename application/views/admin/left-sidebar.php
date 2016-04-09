@@ -3,8 +3,8 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                  <h5 class="centered">Marcel Newman</h5>
+                  <!-- <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p> -->
+                  <h5 class="centered uppercase"><?php echo $_SESSION["username"]; ?></h5>
                     
                   <li class="mt">
                       <a class="<?php if($this->uri->segment(1)=='dashboard') echo 'active';?>" href="<?php echo base_url('dashboard'); ?>">
@@ -20,7 +20,7 @@
                           <span>Add Account</span>
                       </a>
                   </li>
-                  <li class="sub-menu">
+                  <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-th"></i>
                           <span>Data Tables</span>
@@ -39,7 +39,7 @@
                           <li><a  href="morris.html">Morris</a></li>
                           <li><a  href="chartjs.html">Chartjs</a></li>
                       </ul>
-                  </li>
+                  </li> -->
 
               </ul>
               <!-- sidebar menu end-->

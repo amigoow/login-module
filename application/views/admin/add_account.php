@@ -19,173 +19,75 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> Form Components</h3>
+          	<h3><i class="fa fa-angle-right"></i> Add Account</h3>
           	
           	<!-- BASIC FORM ELELEMNTS -->
           	<div class="row mt">
           		<div class="col-lg-12">
                   <div class="form-panel">
-                  	  <h4 class="mb"><i class="fa fa-angle-right"></i> Form Elements</h4>
+                  	  <h4 class="mb"><i class="fa fa-angle-right"></i> Please fill in the following details: </h4>
                       <form class="form-horizontal style-form" method="get">
+                          
                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Default</label>
+                              <label class="col-sm-2 col-sm-2 control-label">Account Name: </label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control">
+                                  <input type="text" class="form-control" name="acc_name" id="acc_name">
+                                  <span class="help-block">Name of account which will appear on your public profile</span>
                               </div>
                           </div>
+
                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Help text</label>
+                              <label class="col-sm-2 col-sm-2 control-label">Account URL: </label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control">
-                                  <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                                  <input type="text" class="form-control" name="acc_link" id="acc_link">
+                                  <span class="help-block">URL of account where user will be navigated to for review</span>
                               </div>
                           </div>
+                          
+                          
                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Rounder</label>
+                              <label class="col-sm-2 col-sm-2 control-label">Account Type: </label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control round-form">
+                                  <!-- INPUT MESSAGES -->
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="optionsRadios" id="biggy" value="biggy" checked>
+                                      BIG Icon
+                                    </label>
+                                  </div>
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="optionsRadios" id="small2" value="small">
+                                      Small Icon
+                                    </label>
+                                  </div>
                               </div>
                           </div>
                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Input focus</label>
+                              <label class="col-sm-2 col-sm-2 control-label">Upload Icon image: </label>
                               <div class="col-sm-10">
-                                  <input class="form-control" id="focusedInput" type="text" value="This is focused...">
+                                  <input type="file" class="form-control">
                               </div>
                           </div>
                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Disabled</label>
-                              <div class="col-sm-10">
-                                  <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
-                              </div>
+                            <div class="col-sm-10 col-sm-offset-2">
+                              <button class="btn btn-info" id="add_account">Submit</button>
+                            </div>
                           </div>
-                          <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Placeholder</label>
-                              <div class="col-sm-10">
-                                  <input type="text"  class="form-control" placeholder="placeholder">
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Password</label>
-                              <div class="col-sm-10">
-                                  <input type="password"  class="form-control" placeholder="">
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-lg-2 col-sm-2 control-label">Static control</label>
-                              <div class="col-lg-10">
-                                  <p class="form-control-static">email@example.com</p>
-                              </div>
-                          </div>
+                          
+                          
                       </form>
                   </div>
           		</div><!-- col-lg-12-->      	
           	</div><!-- /row -->
           	
-          	<!-- INLINE FORM ELELEMNTS -->
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          			<div class="form-panel">
-                  	  <h4 class="mb"><i class="fa fa-angle-right"></i> Inline Form</h4>
-                      <form class="form-inline" role="form">
-                          <div class="form-group">
-                              <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-                          </div>
-                          <div class="form-group">
-                              <label class="sr-only" for="exampleInputPassword2">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-                          </div>
-                          <button type="submit" class="btn btn-theme">Sign in</button>
-                      </form>
-          			</div><!-- /form-panel -->
-          		</div><!-- /col-lg-12 -->
-          	</div><!-- /row -->
           	
-          	<!-- INPUT MESSAGES -->
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          			<div class="form-panel">
-                  	  <h4 class="mb"><i class="fa fa-angle-right"></i> Input Messages</h4>
-                          <form class="form-horizontal tasi-form" method="get">
-                              <div class="form-group has-success">
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Input with success</label>
-                                  <div class="col-lg-10">
-                                      <input type="text" class="form-control" id="inputSuccess">
-                                  </div>
-                              </div>
-                              <div class="form-group has-warning">
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputWarning">Input with warning</label>
-                                  <div class="col-lg-10">
-                                      <input type="text" class="form-control" id="inputWarning">
-                                  </div>
-                              </div>
-                              <div class="form-group has-error">
-                                  <label class="col-sm-2 control-label col-lg-2" for="inputError">Input with error</label>
-                                  <div class="col-lg-10">
-                                      <input type="text" class="form-control" id="inputError">
-                                  </div>
-                              </div>
-                          </form>
-          			</div><!-- /form-panel -->
-          		</div><!-- /col-lg-12 -->
-          	</div><!-- /row -->
           	
-          	<!-- INPUT MESSAGES -->
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          			<div class="form-panel">
-                  	  <h4 class="mb"><i class="fa fa-angle-right"></i> Checkboxes, Radios & Selects</h4>
-						<div class="checkbox">
-						  <label>
-						    <input type="checkbox" value="">
-						    Option one is this and that&mdash;be sure to include why it's great
-						  </label>
-						</div>
+          	
+          	
+          	
 						
-						<div class="radio">
-						  <label>
-						    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-						    Option one is this and that&mdash;be sure to include why it's great
-						  </label>
-						</div>
-						<div class="radio">
-						  <label>
-						    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-						    Option two can be something else and selecting it will deselect option one
-						  </label>
-						</div>
-						
-						<hr>
-						<label class="checkbox-inline">
-						  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-						</label>
-						<label class="checkbox-inline">
-						  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-						</label>
-						<label class="checkbox-inline">
-						  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-						</label>
-						
-						<hr>
-						<select class="form-control">
-						  <option>1</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
-						</select>
-						<br>
-						<select multiple class="form-control">
-						  <option>1</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
-						</select>        		
-          			</div><!-- /form-panel -->
-          		</div><!-- /col-lg-12 -->
-          		
-          	</div><!-- /row -->
+					
           	
           	
 		</section><! --/wrapper -->

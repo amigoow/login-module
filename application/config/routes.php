@@ -57,7 +57,7 @@ $route['login'] = 'user/login';
 $route['logout'] = 'user/logout';
 
 $route['new_pass/(:any)'] = 'user/login/$';
-
+$route['confirme/(:any)/(:any)'] = 'user/confirm/$/$';
 $route['default_controller'] = 'user';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
