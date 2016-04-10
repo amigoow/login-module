@@ -1,7 +1,7 @@
 <header class="header black-bg">
    
     <!--logo start-->
-    <a href="#" class="logo"><b>CORPORATE FIRM</b></a>
+    <a href="<?php echo base_url(); ?>" class="logo"><b>CORPORATE FIRM</b></a>
     <!--logo end-->
     <!-- <div class="nav notify-row" id="top_menu">
         

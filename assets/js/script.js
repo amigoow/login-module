@@ -1,18 +1,12 @@
+var request_url = "http://localhost/CodeIg/";
 $(document).ready(function(){
     
     /*******config********/
+    //view all accounts
     
-    var urls = {
-        "yelp" : {
-          "url" : "http://www.yelp.com/writeareview/biz/sJjrlg2UZUQhu1J3iYMVuw?return_url=%2Fbiz%2FsJjrlg2UZUQhu1J3iYMVuw",
-          "icon" : "icons/yelp.png" 
-        }
-        ,
-        "google" : {
-          "url" : "http://www.google.com",
-          "icon" : "icons/google.png"
-        }
-    };
+
+
+   
     
     
     //set the top title
@@ -99,17 +93,37 @@ $(document).ready(function(){
     });
 
     //nice select
-    $.each(urls, function(key, value){
+    var urls;
+    $.get(request_url + 'account/my_accounts' , function(r_data){
+
+        urls = JSON.parse(r_data);
+        $.each(urls, function(key, value){
         
-        console.log(value.url);
 
-        btn_html = '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="btn-group"> <button data-value="'+key+'" data-url="'+value.url+'" type="button" class="btn btn-default"><span class="assoc-icon" style="background-image:url('+value.icon+')"></span></button> <button data-value="'+key+'" data-url="'+value.url+'" type="button" class="btn btn-default dropdown-toggle rev-title"  aria-haspopup="true" aria-expanded="false">' + key + '</button> </div></div>';
-          
-        $("#review-sel").append(
-            btn_html
-        );
+            btn_html = '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="btn-group"> <button data-value="'+value.account_name+'" data-url="'+value.url+'" type="button" class="btn btn-default"><span class="assoc-icon" style="background-image:url(\''+value.img_path+'\')"></span></button> <button data-value="'+value.account_name+'" data-url="'+value.url+'" type="button" class="btn btn-default dropdown-toggle rev-title"  aria-haspopup="true" aria-expanded="false">' + value.account_name + '</button> </div></div>';
+              
+            $("#review-sel").append(
+                btn_html
+            );
 
-    }); //nice select
+        }); //nice select
+        // $.each(json, function(index, data){
+        //     //console.log(data);
+        //     account_type = "";
+        //     if(data.acc_type == "biggy"){ 
+        //         account_type = '<div><span class="li_star"></span></div>'; 
+        //     }else{account_type = '<div><span class="li_stack"></span></div>';}
+
+        //     name = '<div class="account-name white-header"> <h5>'+data.account_name+'</h5> </div>';
+
+        //     img = '<div class="account-icon" style="height:100px;width:100px;background-size: cover; background-position:center center;background-repeat:no-repeat;background-image:url(\''+data.img_path+'\')"></div>';
+            
+        //     url = '<div class="account-url">URL: ' +data.url + '</div>';
+
+        // });    
+    }); 
+    
+
 
     $("option").each(function() {
         $(this).text($(this).text().charAt(0).toUpperCase() + $(this).text().slice(1));
