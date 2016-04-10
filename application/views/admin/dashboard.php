@@ -20,7 +20,7 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
-      <section id="main-content">
+      <section id="main-content" >
           <section class="wrapper">
 
               <div class="row">
@@ -66,57 +66,22 @@
                   	</div><!-- /row mt -->	
                   
                       
-                      <div class="row mt">
-                      <!-- SERVER STATUS PANELS -->
-                      	<div class="col-md-4 col-sm-4 mb">
-                      		<div class="white-panel pn donut-chart">
-                      			<div class="white-header">
-						  			<h5>SERVER LOAD</h5>
-                      			</div>
-								<div class="row">
-									<div class="col-sm-6 col-xs-6">
-										
-									</div>
-	                      		</div>
-								
-	                      	</div>
-                      	</div><!-- /col-md-4-->
-                      	
 
-                      	
-                      	<div class="col-md-4 col-sm-4 mb">
-                      		<div class="white-panel pn donut-chart">
-                      			<div class="white-header">
-						  			<h5>SERVER LOAD</h5>
-                      			</div>
-								<div class="row">
-									<div class="col-sm-6 col-xs-6">
-										
-									</div>
-	                      		</div>
-								
-	                      	</div>
-                      	</div><!-- /col-md-4-->
-                      	
-
-                      	<div class="col-md-4 col-sm-4 mb">
-                      		<div class="white-panel pn donut-chart">
-                      			<div class="white-header">
-						  			<h5>SERVER LOAD</h5>
-                      			</div>
-								<div class="row">
-									<div class="col-sm-6 col-xs-6">
-										
-									</div>
-	                      		</div>
-								
-	                      	</div>
-                      	</div><!-- /col-md-4-->
-                      	
-
-                      	
-
-                    </div><!-- /row -->
+                    <!-- SERVER STATUS PANELS -->
+                  	<div class="col-md-4 col-sm-4 mb" >
+                  		<div class="white-panel pn">
+                  			<div class="white-header">
+          						  			<h5>{{accData}}</h5>
+                        </div>
+        								<div class="row">
+        									<div class="col-sm-6 col-xs-6">
+        										
+        									</div>
+                  	  	</div>
+                    	</div>
+                  	</div><!-- /col-md-4-->
+  	
+                  </div><!-- /row -->
                     
                     				
 				
