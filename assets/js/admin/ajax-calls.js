@@ -65,8 +65,26 @@ $(function(){
 	    if (window.location.href.indexOf("dashboard") > -1) {
         	//view all accounts
 			$.get(request_url + 'account/my_accounts' , function(r_data){
-				res_html = '';
-	        	$(".white-panel").append(res_html);
+				json = JSON.parse(r_data);
+
+				$.each(json, function(index, data){
+					//console.log(data);
+					account_type = "";
+					if(data.acc_type == "biggy"){ 
+						account_type = '<div><span class="li_star"></span></div>'; 
+					}else{account_type = '<div><span class="li_stack"></span></div>';}
+
+					name = '<div class="account-name white-header"> <h5>'+data.account_name+'</h5> </div>';
+
+					img = '<div class="account-icon" style="height:100px;width:100px;background-size: cover; background-position:center center;background-repeat:no-repeat;background-image:url(\''+data.img_path+'\')"></div>';
+					
+					url = '<div class="account-url">URL: ' +data.url + '</div>';
+
+					acc_html = ' <div class="col-md-4 col-sm-4 mb" ><div class="white-panel pn"> '+name+' <div class="row"> <div class="col-sm-6 col-xs-6">'+ account_type  + img + url + '</div> </div> </div></div>';
+					$(".my_accounts").append(acc_html);
+				});
+				
+				
 	        });		
 	    }
 

@@ -68,18 +68,12 @@
                       
 
                     <!-- SERVER STATUS PANELS -->
-                  	<div class="col-md-4 col-sm-4 mb" >
-                  		<div class="white-panel pn">
-                  			<div class="white-header">
-          						  			<h5>{{accData}}</h5>
-                        </div>
-        								<div class="row">
-        									<div class="col-sm-6 col-xs-6">
-        										
-        									</div>
-                  	  	</div>
-                    	</div>
-                  	</div><!-- /col-md-4-->
+                    <div class="my_accounts">
+                      
+                     <!-- TO BE POPULATED BY AJAX_CALLS.JS -->
+
+                    </div>
+                  	
   	
                   </div><!-- /row -->
                     
