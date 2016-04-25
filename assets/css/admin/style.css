@@ -2242,4 +2242,22 @@ label {
     min-height: 900px;
 }
 
+.delete-acc-btn{
+  
+  font-size: 1.5em;
+}
+.delete-acc-btn:hover{
+  color: rgba(169, 68, 66, 0.64);
+  cursor: pointer;
 
+}
+
+.account-icon{
+    border-radius: 50%;
+    margin: 20px auto;
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}

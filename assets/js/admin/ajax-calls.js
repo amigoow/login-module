@@ -1,5 +1,9 @@
+
+
 var request_url = "http://localhost/CodeIg/";
 $(function(){
+
+	// ADD ACCOUNT 
 	$("#add_account").click(function(e){
 		e.preventDefault();
 
@@ -54,41 +58,83 @@ $(function(){
         		//redirect to all accounts
         		location.href = request_url + 'dashboard'
         	}else{
-        		alert("error while inserting new record.");
+        		alert("Fail! error while inserting new record.");
         	}
         });
 
 
+       
+
 
 	});
 
-	    if (window.location.href.indexOf("dashboard") > -1) {
-        	//view all accounts
-			$.get(request_url + 'account/my_accounts' , function(r_data){
+	
+
+	
+
+    if (window.location.href.indexOf("dashboard") > -1) {
+
+    	//view all accounts
+		$.get(request_url + 'account/my_accounts' , function(r_data){
+			if(r_data != ""){
 				json = JSON.parse(r_data);
 
 				$.each(json, function(index, data){
-					//console.log(data);
+					//console.log(data);return;
 					account_type = "";
 					if(data.acc_type == "biggy"){ 
 						account_type = '<div><span class="li_star"></span></div>'; 
 					}else{account_type = '<div><span class="li_stack"></span></div>';}
 
-					name = '<div class="account-name white-header"> <h5>'+data.account_name+'</h5> </div>';
+					name = '<div class="account-name white-header"> <h5>'+data.account_name+'<span onclick="deleteAccount(this);" data-user-id="'+ data.user_id +'" data-acc-id="'+data.account_id+'" class="fa fa-times fa-2x delete-acc-btn"></span></h5> </div>';
 
-					img = '<div class="account-icon" style="height:100px;width:100px;background-size: cover; background-position:center center;background-repeat:no-repeat;background-image:url(\''+data.img_path+'\')"></div>';
+					img = '<div class="account-icon" style="background-image:url(\''+data.img_path+'\')"></div>';
 					
 					url = '<div class="account-url">URL: ' +data.url + '</div>';
 
-					acc_html = ' <div class="col-md-4 col-sm-4 mb" ><div class="white-panel pn"> '+name+' <div class="row"> <div class="col-sm-6 col-xs-6">'+ account_type  + img + url + '</div> </div> </div></div>';
+					acc_html = ' <div class="col-md-4 col-sm-4 mb" ><div class="white-panel pn"> '+name+' <div class="row"> <div class="col-sm-12 col-xs-12">'+ account_type  + img + url + '</div> </div> </div></div>';
 					$(".my_accounts").append(acc_html);
-				});
-				
-				
-	        });		
-	    }
+				});	
+			}else{
+				acc_html = '<p class="not_found text-center">0 accounts found.  </p>';
+				$(".my_accounts").append(acc_html);
+			}
+        });		
+    }
+
 
 
 
 	
 });
+
+// DELETE ACCOUNT
+function deleteAccount(e){
+
+	user_id = $(e).data("user-id");
+	acc_id = $(e).data("acc-id");
+	
+	var data = new Object();
+	
+	data.user_id = user_id;
+	data.acc_id = acc_id;
+
+	if(confirm("Are you sure you want to delete this account?")){
+
+		$.ajax( {
+	        url:  request_url + 'account/delete_account',
+	        type: 'POST',
+	        data: data,
+	        dataType: 'json',
+        } ).done(function(r_data){
+        	if(r_data.status == 200){
+        		//redirect to all accounts
+        		location.reload();
+        	}else{
+        		alert("Fail! An error occured while deleting this account.");
+        	}
+        });
+		
+	}
+
+}

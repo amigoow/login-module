@@ -67,8 +67,9 @@
                   
                       
 
-                    <!-- SERVER STATUS PANELS -->
-                    <div class="my_accounts">
+                  <!-- SERVER STATUS PANELS -->
+                  <div class="my_accounts">
+                    <h3 class="text-center">My Accounts </h3>
                       
                      <!-- TO BE POPULATED BY AJAX_CALLS.JS -->
 

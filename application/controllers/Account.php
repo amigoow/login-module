@@ -58,6 +58,28 @@ class Account extends CI_Controller {
 		
 
 	}
+
+	public function delete_account() {
+
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			$uid = (int)$this->input->post('user_id');
+			$aid = (int)$this->input->post('acc_id');
+			
+			//security check
+			if($_SESSION["user_id"] == $uid){
+				//let's call the model
+				echo $this->account_model->delete_account($uid, $aid);
+			}
+			
+			
+			
+		}else{
+			redirect('/');
+		}
+
+		
+
+	}
 	public function my_accounts() {
 
 		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {

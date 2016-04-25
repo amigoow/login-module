@@ -40,7 +40,7 @@ class Account_model extends CI_Model {
 		$userid = $this->get_userid_from_username($username);
 		if(!$userid){
 			$res["msg"] = "userid not found";
-			$res["status"] = "status";
+			$res["status"] = "fail";
 		}else{
 			$data = array(
 			
@@ -57,10 +57,27 @@ class Account_model extends CI_Model {
 		return json_encode($res);
 		
 	}
+	public function delete_account($uid, $aid) {
+
+		$res = array(
+			"status" => 200,
+			"msg" => "success",
+			"data" => $uid
+		);
+
+		$this->db->update('accounts', array("is_active" => 0), array('account_id' => $aid, "user_id" => $uid ) );
+		if($this->db->affected_rows() != 1){
+			$res["msg"] = "Some error!";
+			$res["status"] = "500";
+		}
+		return json_encode($res);
+	}
 
 	public function my_account_model($username){
 		$userid = $this->get_userid_from_username($username);
 		$this->db->where('user_id', $userid);
+		$this->db->where('is_active', 1);
+		
 		$query = $this->db->get('accounts');
 	
 		return $query->num_rows() != 0  ? json_encode($query->result_array()) : FALSE;

@@ -20,17 +20,14 @@
                           <span>Add Account</span>
                       </a>
                   </li>
-                  <!-- <li class="sub-menu">
+                  <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-th"></i>
-                          <span>Data Tables</span>
+                          <span>Review stars settings</span>
                       </a>
-                      <ul class="sub">
-                          <li><a  href="basic_table.html">Basic Table</a></li>
-                          <li><a  href="responsive_table.html">Responsive Table</a></li>
-                      </ul>
+                      
                   </li>
-                  <li class="sub-menu">
+                  <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class=" fa fa-bar-chart-o"></i>
                           <span>Statistics</span>

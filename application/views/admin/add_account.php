@@ -31,7 +31,7 @@
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Account Name: </label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="acc_name" id="acc_name">
+                                  <input type="text" class="form-control" name="acc_name" id="acc_name" required> 
                                   <span class="help-block">Name of account which will appear on your public profile</span>
                               </div>
                           </div>
@@ -39,7 +39,7 @@
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Account URL: </label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="acc_link" id="acc_link">
+                                  <input type="text" class="form-control" name="acc_link" id="acc_link" required>
                                   <span class="help-block">URL of account where user will be navigated to for review</span>
                               </div>
                           </div>
@@ -71,7 +71,7 @@
                           </div>
                           <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
-                              <button class="btn btn-info" id="add_account">Submit</button>
+                              <button class="btn btn-info" id="add_account">Add Account</button>
                             </div>
                           </div>
                           

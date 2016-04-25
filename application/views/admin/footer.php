@@ -12,10 +12,11 @@
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
+   <!-- jqurey -->
     <script src="<?= base_url('assets/js/jquery.js') ?>"></script>
    <!-- bootstrap -->
    <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
-   <!-- jqury -->
+   
 
    <!-- noty -->
    <script src="<?= base_url('assets/node_modules/noty/packaged/jquery.noty.packaged.min.js') ?>"></script>

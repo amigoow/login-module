@@ -29,6 +29,9 @@
 				</div>
 				<div class="form-group">
 					<input type="submit" class="btn btn-default" value="Register">
+					<div class="pull-right" style="margin-top: 7px;">
+						<a href="<?= base_url('login'); ?>" class="">Already have an account?</a> 	
+					</div>
 				</div>
 			</form>
 		</div>

@@ -13,7 +13,7 @@
             </div>
            
                 
-            <input id="my_rating" value="0" type="number" class="rating rating-loading" min=0 max=5 step=0.5 data-size="xl">
+            <input id="my_rating">
             <hr>
             <!-- Corresponding Caption will be shown here! -->
             <div id="myCaption">
