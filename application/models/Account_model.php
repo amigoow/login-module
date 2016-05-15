@@ -73,6 +73,18 @@ class Account_model extends CI_Model {
 		return json_encode($res);
 	}
 
+	public function get_account($acc_id, $username){
+		$userid = $this->get_userid_from_username($username);
+
+		$this->db->where('user_id', $userid);
+		$this->db->where('account_id', $acc_id);
+		$this->db->where('is_active', 1);
+		
+		$query = $this->db->get('accounts');
+	
+		return $query->num_rows() != 0  ? json_encode($query->result_array()) : FALSE;
+	}
+
 	public function my_account_model($username){
 		$userid = $this->get_userid_from_username($username);
 		$this->db->where('user_id', $userid);

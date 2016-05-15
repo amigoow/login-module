@@ -2241,9 +2241,14 @@ label {
 .site-min-height {
     min-height: 900px;
 }
-
-.delete-acc-btn{
-  
+.account-name.white-header{
+    text-align: left;
+    font-weight: 700;
+    color: #111;
+    font-size: 1.3em;
+}
+.delete-acc-btn, .edit-acc-btn{
+  margin-right: 7px;
   font-size: 1.5em;
 }
 .delete-acc-btn:hover{
@@ -2260,4 +2265,8 @@ label {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+}
+.edit-acc-btn:hover{
+  color: #337AB7;
+  cursor: pointer;
 }

@@ -86,11 +86,15 @@ $(function(){
 						account_type = '<div><span class="li_star"></span></div>'; 
 					}else{account_type = '<div><span class="li_stack"></span></div>';}
 
-					name = '<div class="account-name white-header"> <h5>'+data.account_name+'<span onclick="deleteAccount(this);" data-user-id="'+ data.user_id +'" data-acc-id="'+data.account_id+'" class="fa fa-times fa-2x delete-acc-btn"></span></h5> </div>';
+					name = '<div class="account-name white-header">'+
+							'<h5>'+data.account_name+
+							'<span class="fa fa-times fa-2x pull-right delete-acc-btn" onclick="deleteAccount(this);" data-user-id="'+ data.user_id +'" data-acc-id="'+data.account_id+'"></span>'+
+							'<span class="fa fa-pencil pull-right edit-acc-btn" onclick="editAccount(this);" data-user-id="'+ data.user_id +'" data-acc-id="'+data.account_id+'"></span>'+
+							'</h5> </div>';
 
 					img = '<div class="account-icon" style="background-image:url(\''+data.img_path+'\')"></div>';
 					
-					url = '<div class="account-url">URL: ' +data.url + '</div>';
+					url = '<div class="account-url">' +data.url + '</div>';
 
 					acc_html = ' <div class="col-md-4 col-sm-4 mb" ><div class="white-panel pn"> '+name+' <div class="row"> <div class="col-sm-12 col-xs-12">'+ account_type  + img + url + '</div> </div> </div></div>';
 					$(".my_accounts").append(acc_html);
@@ -136,5 +140,13 @@ function deleteAccount(e){
         });
 		
 	}
+}
+// edit ACCOUNT
+function editAccount(e){
+	acc_id = $(e).data("acc-id");
+	$.get(request_url + 'account/get_account/' + acc_id , function(r_data){
+		console.log(r_data);
+	});
 
+	
 }

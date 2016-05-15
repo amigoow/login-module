@@ -149,3 +149,6 @@ from{top:3px;}
     margin-top: 15px;
   }
 }
+.edit-acc-btn:hover{
+  color: #337AB7;
+}

@@ -92,6 +92,14 @@ class Account extends CI_Controller {
 		
 
 	}
+	public function get_account($acc_id) {
+		
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			echo $this->account_model->get_account($acc_id, $_SESSION['username']);	
+		}else{
+			redirect('/');
+		}
+	}
 
 	public function upload_file(){
 		$valid_file=true;

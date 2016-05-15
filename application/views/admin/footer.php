@@ -2,7 +2,7 @@
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              <?php echo date('Y'); ?> - <a href="mailto:faisalashfaq81z@gmail.com">Developed by Faisal</a>
+              <?php echo date('Y'); ?> - All rights reserved.</a>
               <a href="#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
