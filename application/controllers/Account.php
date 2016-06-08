@@ -39,6 +39,33 @@ class Account extends CI_Controller {
 		$this->load->view('admin/add_account.php', $data);
 		$this->load->view('admin/footer');		
 	}
+	public function basic_info() {
+
+		$data = new stdClass;
+		$this->load->view('admin/header');
+		$this->load->view('admin/basic_info.php', $data);
+		$this->load->view('admin/footer');		
+	}
+	public function new_basics() {
+
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			
+			$feedback_title = $this->input->post('title');
+			$feedback_subtitle = $this->input->post('subtitle');
+			$feedback_1_5 = $this->input->post('feedback_1_5');
+			$feedback_2_5 = $this->input->post('feedback_2_5');
+			$feedback_3_5 = $this->input->post('feedback_3_5');
+			$feedback_4_5 = $this->input->post('feedback_4_5');
+			$feedback_5_5 = $this->input->post('feedback_5_5');
+			
+			echo $this->account_model->new_basics($_SESSION["username"],$feedback_title, $feedback_subtitle, $feedback_1_5, $feedback_2_5, $feedback_3_5, $feedback_4_5, $feedback_5_5);	
+		}else{
+			redirect('/');
+		}
+
+		
+
+	}
 	public function new_account() {
 
 		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
@@ -57,6 +84,25 @@ class Account extends CI_Controller {
 
 		
 
+	}
+	public function update_account() {
+
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			
+
+			$username = $this->input->post('user');
+			$account = $this->input->post('account');
+			$accname = $this->input->post('name');
+			$acclink = $this->input->post('link');
+			$acctype = $this->input->post('type');
+			$imgpath = $this->input->post('imgpath');
+			$imgtype = $this->input->post('imgtype');
+			
+			
+			echo $this->account_model->update_account($username, $account, $accname, $acclink, $acctype, $imgpath);	
+		}else{
+			redirect('/');
+		}		
 	}
 
 	public function delete_account() {
@@ -81,17 +127,15 @@ class Account extends CI_Controller {
 
 	}
 	public function my_accounts() {
+		if(!isset($_POST["username"])) {
 
-		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-			echo $this->account_model->my_account_model($_SESSION['username']);	
+			$username = $_SESSION["username"];
 		}else{
-			redirect('/');
+			$username = $_POST["username"];
 		}
-		
-		
-		
-
+		echo $this->account_model->my_account_model($username);	
 	}
+	
 	public function get_account($acc_id) {
 		
 		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
@@ -101,6 +145,16 @@ class Account extends CI_Controller {
 		}
 	}
 
+	public function get_basic_info(){
+		if(!isset($_POST["username"])) {
+
+			$username = $_SESSION["username"];
+		}else{
+			$username = $_POST["username"];
+		}
+		echo $this->account_model->get_basic_info($username);	
+		
+	}
 	public function upload_file(){
 		$valid_file=true;
 	 	$message;

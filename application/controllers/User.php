@@ -28,10 +28,9 @@ class User extends CI_Controller {
 		// create the data object
 		
 		$data['title'] = "Corporate Filter";
-		// load the main site
-		$this->load->view('header', $data);
-		$this->load->view('master/master', $data);
-		$this->load->view('footer');
+		// load the landing page
+		
+		$this->load->view('landing/index.php', $data);
 		
 		
 	}

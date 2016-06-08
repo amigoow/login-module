@@ -68,6 +68,40 @@ $(function(){
 
 	});
 
+	$("#add_basics").click(function(e){
+		e.preventDefault();
+
+		var data = new Object();
+		data.title = $("#feedback_title").val();
+		data.subtitle = $("#feedback_subtitle").val();
+		data.feedback_1_5 = $("#feedback_1_5").val();
+		data.feedback_2_5 = $("#feedback_2_5").val();
+		data.feedback_3_5 = $("#feedback_3_5").val();
+		data.feedback_4_5 = $("#feedback_4_5").val();
+		data.feedback_5_5 = $("#feedback_5_5").val();
+
+
+		//let's save the data
+		$.ajax( {
+	        url:  request_url + 'account/new_basics',
+	        type: 'POST',
+	        data: data,
+	        dataType: 'json',
+        } ).done(function(r_data){
+        	if(r_data.status == 200){
+        		//redirect to all accounts
+        		alert("Done Successfully!");
+        	}else{
+        		alert("Fail! error occured.");
+        	}
+        });
+
+
+       
+
+
+	});
+
 	
 
 	
@@ -145,8 +179,83 @@ function deleteAccount(e){
 function editAccount(e){
 	acc_id = $(e).data("acc-id");
 	$.get(request_url + 'account/get_account/' + acc_id , function(r_data){
-		console.log(r_data);
+		
+		r_data = JSON.parse(r_data);
+
+		$("#edit-account-modal").modal("show");
+
+		$("#acc_name").val(r_data[0].account_name);
+		$("#acc_link").val(r_data[0].url);
+		$("#update_account").attr("data-uid",  r_data[0].user_id );
+		$("#update_account").attr("data-aid",  r_data[0].account_id  );
+		
+
 	});
 
 	
 }
+// Update ACCOUNT 
+$("#update_account").click(function(e){
+	e.preventDefault();
+
+	var data = new Object();
+	data.user = $("#update_account").data().uid;
+	data.account = $("#update_account").data().aid;
+	data.name = $("#acc_name").val();
+	data.link = $("#acc_link").val();
+	data.type = $("input[name=accType]:checked").val();
+	
+	var form = $('form#add_acc_form')[0]; // standard javascript object here
+    var formData = new FormData(form);
+    
+    if($("#uploaded_file").val()!=""){
+
+        $.ajax( {
+          url:  request_url + 'account/upload_file',
+          type: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+          async: false
+        } ).done(function(fdata){
+
+        	file_data = JSON.parse(fdata);
+
+            if(file_data.status != 200){
+            	alert("An error occured during file upload");
+            	return;
+            }
+            else{
+            	
+	            data.imgpath = file_data.save;
+	            data.imgtype = file_data.type;
+	        }
+
+            //TODO check for file type so that only images can be uploaded
+        }); 
+    }else{
+    	alert("please choose an icon image.");
+    	return;
+    }	
+	
+    
+	//let's save the data
+	$.ajax( {
+        url:  request_url + 'account/update_account',
+        type: 'POST',
+        data: data,
+        dataType: 'json',
+    } ).done(function(r_data){
+    	if(r_data.status == 200){
+    		//redirect to all accounts
+    		location.href = request_url + 'dashboard'
+    	}else{
+    		alert("Fail! error while inserting new record.");
+    	}
+    });
+
+
+   
+
+
+});

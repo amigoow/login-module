@@ -13,7 +13,8 @@
 	
     <!-- Bootstrap -->
 	<link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
-    
+	<!-- Landing page -->
+    <link href="<?= base_url('assets/css/stylish-portfolio.css') ?>" rel="stylesheet">
     <!-- FontAwesome -->
 	<link href="<?php echo base_url('assets/font-awesome/css/font-awesome.css'); ?>" rel="stylesheet" />
     

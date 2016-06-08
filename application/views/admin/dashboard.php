@@ -35,7 +35,7 @@
 					  			<p>933 People liked your page the last 24hs. Whoohoo!</p>
                   		</div>
                   
-                  <a href="<?php echo base_url() . $_SESSION['username'] ?>">
+                  <a href="<?php echo base_url() . 'profile/'.$_SESSION['username'] ?>">
                     <div class="col-md-2 col-sm-2 box0">
                 			<div class="box1">
       					  			<span class="li_stack"></span>

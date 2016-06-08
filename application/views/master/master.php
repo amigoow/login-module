@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
+<input type="hidden" value="<?php echo ($user); ?>" name="username" id="get_profile_for_user">
 
 
 <div class="container-fluid">

@@ -13,7 +13,12 @@
                       </a>
                   </li>
 
-                 
+                  <li class="sub-menu">
+                      <a class="<?php if($this->uri->segment(1)=='basic_info') echo 'active';?>" href="<?php echo base_url('basic_info'); ?>" >
+                          <i class="fa fa-tasks"></i>
+                          <span>Basic Info</span>
+                      </a>
+                  </li>
                   <li class="sub-menu">
                       <a class="<?php if($this->uri->segment(1)=='add_account') echo 'active';?>" href="<?php echo base_url('add_account'); ?>" >
                           <i class="fa fa-tasks"></i>

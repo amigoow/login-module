@@ -1,5 +1,73 @@
      <!--main content end-->
+      <!-- modals -->
+      <!-- Modal -->
+      <div class="modal fade" id="edit-account-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              <!-- MODAL BODY -->
+              <form id="add_acc_form" class="form-horizontal style-form" enctype="multipart/form-data">
+                          
+                          <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Account Name: </label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="acc_name" id="acc_name" required> 
+                                  <span class="help-block">Name of account which will appear on your public profile</span>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Account URL: </label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="acc_link" id="acc_link" required>
+                                  <span class="help-block">URL of account where user will be navigated to for review</span>
+                              </div>
+                          </div>
+                          
+                          
+                          <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Account Type: </label>
+                              <div class="col-sm-10">
+                                  <!-- INPUT MESSAGES -->
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="accType" id="biggy" value="biggy" checked>
+                                      BIG Icon
+                                    </label>
+                                  </div>
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="accType" id="small2" value="small">
+                                      Small Icon
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Upload Icon image: </label>
+                              <div class="col-sm-10">
+                                  <input type="file" class="form-control" name="uploaded_file" id="uploaded_file">
+                              </div>
+                          </div>
+                          
+                          
+                          
+                      </form>
+              <!-- MODAL BODY -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="update_account">UPDATE</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!--footer start-->
+
       <footer class="site-footer">
           <div class="text-center">
               <?php echo date('Y'); ?> - All rights reserved.</a>

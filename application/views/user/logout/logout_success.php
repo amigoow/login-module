@@ -5,7 +5,13 @@
 			<div class="page-header">
 				<h1>Logout success!</h1>
 			</div>
-			<p>You are now logged out.</p>
+			<p>You are being logged out...</p>
+			<script>
+				setTimeout(function(){
+					window.location.href = '/';
+				},2000)
+			</script>
+			
 		</div>
 	</div><!-- .row -->
 </div><!-- .container -->
