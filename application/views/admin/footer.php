@@ -1,6 +1,7 @@
      <!--main content end-->
       <!-- modals -->
       <!-- Modal -->
+      <img src="<?php echo base_url('assets/imgs/loading.gif'); ?>" id="ajax-load" style="display:none" />
       <div class="modal fade" id="edit-account-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -89,17 +90,15 @@
    <!-- noty -->
    <script src="<?= base_url('assets/node_modules/noty/packaged/jquery.noty.packaged.min.js') ?>"></script>
    <!-- bootbox -->
-   <script src="<?= base_url('assets/node_modules/bootbox/bootbox.min.js') ?>"></script>
+   
 
    <!-- star rating -->
    <script src="<?php echo base_url('assets/js/star-rating.min.js'); ?>" type="text/javascript"></script>
 
 
     <script class="include" type="text/javascript" src="<?= base_url('assets/js/admin/jquery.dcjqaccordion.2.7.js'); ?>"></script>
-    <script src="<?= base_url('assets/js/admin/jquery.scrollTo.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/js/admin/jquery.nicescroll.js'); ?>" type="text/javascript"></script>
-    <script src="<?= base_url('assets/js/admin/jquery.sparkline.js'); ?>"></script>
-
+    
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/admin/ajax-loader/jquery.loading.min.js'); ?>"> 
 
     <!--common script for all pages-->
     <script src="<?= base_url('assets/js/admin/common-scripts.js'); ?>"></script>
@@ -107,49 +106,89 @@
 
 
     <!--script for this page-->
-    <script src="<?= base_url('assets/js/admin/sparkline-chart.js'); ?>"></script>    
-	<script src="<?= base_url('assets/js/admin/zabuto_calendar.js'); ?>"></script>	
-	
-	
+   
+	<!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 	
 	<script type="application/javascript">
-        $(document).ready(function () {
-            $("#date-popover").popover({html: true, trigger: "manual"});
-            $("#date-popover").hide();
-            $("#date-popover").click(function (e) {
-                $(this).hide();
-            });
         
-            $("#my-calendar").zabuto_calendar({
-                action: function () {
-                    return myDateFunction(this.id, false);
-                },
-                action_nav: function () {
-                    return myNavFunction(this.id);
-                },
-                ajax: {
-                    url: "show_data.php?action=1",
-                    modal: true
-                },
-                legend: [
-                    {type: "text", label: "Special event", badge: "00"},
-                    {type: "block", label: "Regular event", }
-                ]
-            });
+        $("#uploaded_file").on('change' , function(){
+          
+          $('.selectpicker').selectpicker('val','');  
         });
-        
-        
-        function myNavFunction(id) {
-            $("#date-popover").hide();
-            var nav = $("#" + id).data("navigation");
-            var to = $("#" + id).data("to");
-            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-        }
+
+        $('.selectpicker').selectpicker();
+
+        /*!
+         * Loading v1.0
+         * Copyright Grafikdev
+         * Distributed under the MIT license
+         */
+
+        (function($) {
+
+            $.fn.Loading = function(options) {
+
+
+                var methods = {
+
+                    init : function(option) {
+                        $(document).on({
+                            ajaxStart: function() {
+                                helpers.start();
+                            },
+                            ajaxStop: function() {
+                                var wait = setTimeout(function(){
+                                    helpers.stop();
+                                    clearTimeout(wait);
+                                },2000);
+                            }
+                        });
+
+                        return this;
+                    }
+                }
+
+                var helpers = {
+                  start : function(){
+                    if($('#full-loading').length == 0) {
+                            var loading = $("<div>").attr("id","full-loading");
+                            var wrapper = $("<div>").addClass("wrapper").appendTo(loading);
+                            var inner = $("<div>").addClass("inner").appendTo(wrapper);
+                            $("<span>").text("L").appendTo(inner);
+                            $("<span>").text("o").appendTo(inner);
+                            $("<span>").text("a").appendTo(inner);
+                            $("<span>").text("d").appendTo(inner);
+                            $("<span>").text("i").appendTo(inner);
+                            $("<span>").text("n").appendTo(inner);
+                            $("<span>").text("g").appendTo(inner);
+                            $(loading).appendTo("body");
+                        }
+                  },
+                  stop : function(){
+                    if($('#full-loading').length != 0) {
+                            $('#full-loading').remove();
+                        }
+                  }
+                }
+
+                return methods.init.apply(this, arguments);
+            }
+
+        })(jQuery);
+
+        $(document).ready(function () {
+          
+          $(document).Loading();
+          
+        });
     </script>
     <!-- custom js -->
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
+       
+    
     <script src="<?= base_url('assets/js/admin/ajax-calls.js') ?>"></script>
-
+    
 
   </body>
 </html>

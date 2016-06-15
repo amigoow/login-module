@@ -13,17 +13,21 @@
     <link href="<?= base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <!--external css-->
     <link href="<?= base_url('assets/font-awesome/css/font-awesome.css'); ?>" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/admin/zabuto_calendar.css'); ?>">
     
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/admin/lineicons/style.css'); ?>">    
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/admin/ajax-loader/jquery.loading.min.css'); ?>">    
     
     <!-- Custom styles for this template -->
     <link href="<?= base_url('assets/css/admin/style.css'); ?>" rel="stylesheet">
     <link href="<?= base_url('assets/css/admin/style-responsive.css'); ?>" rel="stylesheet">
-
+    
     <script src="<?= base_url('assets/css/admin/chart-master/Chart.js'); ?>"></script>
     
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
 
+    
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

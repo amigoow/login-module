@@ -11,6 +11,8 @@ $(document).ready(function(){
     //fetch basic info
     $.post(request_url + 'account/get_basic_info' , {username : profile_username})
     .done(function(r_data){
+        
+
         r_data = JSON.parse(r_data);
         data = r_data[0];
         
@@ -175,10 +177,12 @@ function fetchMyAccounts(){
             
 
                 btn_html = '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="btn-group"> <button data-value="'+value.account_name+'" data-url="'+value.url+'" type="button" class="btn btn-default"><span class="assoc-icon" style="background-image:url(\''+value.img_path+'\')"></span></button> <button data-value="'+value.account_name+'" data-url="'+value.url+'" type="button" class="btn btn-default dropdown-toggle rev-title"  aria-haspopup="true" aria-expanded="false">' + value.account_name + '</button> </div></div>';
-                  
-                $("#review-sel").append(
-                    btn_html
-                );
+                if(key == 0){
+                    $("#review-sel").html(btn_html);    
+                }else{
+                    $("#review-sel").append(btn_html);    
+                }
+                
 
             });
         }else{

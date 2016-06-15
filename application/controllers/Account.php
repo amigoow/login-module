@@ -21,11 +21,7 @@ class Account extends CI_Controller {
 		$this->load->model('user_model');
 		$this->load->model('account_model');
 
-		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-			
-		}else{
-			redirect('/');
-		}
+		
 	}
 	
 	public function index() {
@@ -33,11 +29,15 @@ class Account extends CI_Controller {
 	}
 
 	public function add_account() {
-
-		$data = new stdClass;
-		$this->load->view('admin/header');
-		$this->load->view('admin/add_account.php', $data);
-		$this->load->view('admin/footer');		
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			$data = new stdClass;
+			$this->load->view('admin/header');
+			$this->load->view('admin/add_account.php', $data);
+			$this->load->view('admin/footer');	
+		}else{
+			redirect('/');
+		}
+			
 	}
 	public function basic_info() {
 
@@ -46,6 +46,17 @@ class Account extends CI_Controller {
 		$this->load->view('admin/basic_info.php', $data);
 		$this->load->view('admin/footer');		
 	}
+	public function review_ratings() {
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			$data = new stdClass;
+			$this->load->view('admin/header');
+			$this->load->view('admin/review_ratings.php', $data);
+			$this->load->view('admin/footer');		
+		}else{
+			redirect('/');
+		}
+	}
+
 	public function new_basics() {
 
 		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
@@ -90,16 +101,24 @@ class Account extends CI_Controller {
 		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
 			
 
-			$username = $this->input->post('user');
-			$account = $this->input->post('account');
-			$accname = $this->input->post('name');
-			$acclink = $this->input->post('link');
-			$acctype = $this->input->post('type');
-			$imgpath = $this->input->post('imgpath');
-			$imgtype = $this->input->post('imgtype');
+			$update = array();
+
+			$uid = $this->input->post('user');
+			$account_id = $this->input->post('account');
+
+			$update["account_name"]= $this->input->post('name');
+			$update["url"]= $this->input->post('link');
+			$update["acc_type"]= $this->input->post('type');
+			if( $this->input->post('imgpath') != NULL )
+				$update["img_path"]= $this->input->post('imgpath');
+
+			// NO NEED OF img type for now
+			// if($this->input->post('imgtype') != NULL )
+			// 	$update["imgtype"]= $this->input->post('imgtype');
 			
 			
-			echo $this->account_model->update_account($username, $account, $accname, $acclink, $acctype, $imgpath);	
+			
+			echo $this->account_model->update_account($uid, $account_id, $update);	
 		}else{
 			redirect('/');
 		}		
@@ -152,6 +171,7 @@ class Account extends CI_Controller {
 		}else{
 			$username = $_POST["username"];
 		}
+
 		echo $this->account_model->get_basic_info($username);	
 		
 	}

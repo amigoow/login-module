@@ -64,10 +64,31 @@
                               </div>
                           </div>
                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Upload Icon image: </label>
-                              <div class="col-sm-10">
-                                  <input type="file" class="form-control" name="uploaded_file" id="uploaded_file">
+                              
+                              <div class="row">
+                                <label class="col-sm-2 col-sm-2 control-label">Choose ICON: </label>
+                                <div class="col-sm-10">
+                                  <select class="selectpicker">
+                                      <option data-icon="fa fa-file"></option>
+                                      <option data-icon="fa fa-facebook">Facebook</option>
+                                      <option data-icon="fa fa-twitter">Twitter</option>
+                                      <option data-icon="fa fa-yelp">Yelp</option>
+                                      <option data-icon="fa fa-google">Google</option>
+
+                                      
+                                  </select>    
+                                </div>
                               </div>
+
+                              <div class="row">
+                                <label class="col-sm-2 col-sm-2 control-label">OR Upload your own Icon image: </label>
+                                <div class="col-sm-10">
+                                    <input type="file" class="form-control" name="uploaded_file" id="uploaded_file">
+                                </div>
+                              </div>
+                              
+                              
+                              
                           </div>
                           <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">

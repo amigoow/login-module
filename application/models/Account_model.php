@@ -122,24 +122,17 @@ class Account_model extends CI_Model {
 		
 		return $query->num_rows() != 0  ? json_encode($query->result_array()) : FALSE;
 	}
-	public function update_account($uid, $account, $accname, $acclink, $acctype, $imgpath) {
+	public function update_account($uid, $account_id, $update_data) {
 		
 		$res = array(
 			"status" => 200,
 			"msg" => "success",
-			"data" => array(
-				"user_id" => $uid,
-				"account" => $account,
-				"accname" => $accname,
-				"acclink" => $acclink,
-				"acctype" => $acctype,
-				"imgpath" => $imgpath
-					
-			)
+			"data" => $update_data
 		);
 
+		
 
-		$this->db->update('accounts', array("account_name" => $accname, "url" => $acclink, "acc_type" => $acctype, "img_path" => $imgpath ), array('account_id' => $account, "user_id" => $uid ) );
+		$this->db->update('accounts', $update_data, array('account_id' => $account_id, "user_id" => $uid ) );
 		if($this->db->affected_rows() != 1){
 			$res["msg"] = $this->db;
 			$res["status"] = "500";

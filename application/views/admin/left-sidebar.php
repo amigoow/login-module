@@ -26,9 +26,9 @@
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a class="<?php if($this->uri->segment(1)=='review_ratings') echo 'active';?>" href="<?php echo base_url('review_ratings'); ?>" >
                           <i class="fa fa-th"></i>
-                          <span>Review stars settings</span>
+                          <span>Review Ratings</span>
                       </a>
                       
                   </li>
